@@ -29,7 +29,7 @@
 
 ### Блок-схема
 
-<img width="399" height="882" alt="Lab5_dz" src="https://github.com/user-attachments/assets/ffe77eeb-c6b8-4084-bd81-b2bd06c39df7" />
+<img width="637" height="682" alt="LAB_8" src="https://github.com/user-attachments/assets/27198b92-c9f0-4a83-8aa9-b2048382f643" />
 
 
 </div>
