@@ -1,35 +1,30 @@
-// Подключение необходимых библиотек
+// РќРµРѕР±С…РѕРґРёРјС‹Рµ Р±РёР±Р»РёРѕС‚РµРєРё
 #include <stdio.h>
 #include <locale.h>
 #include <math.h>
 
-// Создание оснвной функции
+
+// РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ
 int main() {
-	// Добавление русской локали
+	// Р СѓСЃСЃРєР°СЏ Р»РѕРєР°Р»СЊ
 	setlocale(LC_CTYPE, "RUS");
-	// Создание переменной для ввода из консоли и счетчиков
-	double x, x2;
-	x2 = 0;
-	int fac_start, fac_end, a1 = 1;
-	// Ввод x
-	puts("x - x^3/!3 + x^5/!5 - x^7/!7 + x^9/!9 - x^11/!11 + x^13/!13\nВведите x и границы степеней - (x 3 5): ");
-	scanf("%lf %d %d", &x, &fac_start, &fac_end);
+
+	// РџРµСЂРµРјРµРЅРЅС‹Рµ
+	double x;
+	double result = 0;
+	
+	// Р’РІРѕРґ С‡РёСЃР»Р° x С„Рё РіСЂР°РЅРёС†С‹ РёР· РєРѕРЅСЃРѕР»Рё
+	printf("Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ x: ");
+	scanf("%lf", &x);
 	getchar();
-
-	if ((fac_start % 2 == 0) || (fac_end % 2 == 0)) {
-		puts("Границы должны быть нечетными цифрами/ числами!");
-		return 0;
+	
+	// Р¦РёРєР» СЃ РІС‹С‡РёСЃР»РµРЅРёРµРј РІС‹СЂР°Р¶РµРЅРёСЏ
+	for (int i = 0; i <= 6; i++) {
+		double chisl = pow(x, 2.0 * i + 1);
+		double znam = tgamma(2.0 * i + 2);
+		double term = pow(-1, i) * chisl / znam;
+		result += term;
 	}
-
-		// Проверка и подставновка условий
-		for (int i = 1; fac_start <= fac_end; fac_start += 2, i += 1) {
-			if (i % 2 == 1)
-				x2 += pow(x, fac_start) / tgamma(fac_start+1);
-			else
-				x2 -= pow(x, fac_start) / tgamma(fac_start+1);
-
-		}
-		printf("Ваш результат - %lf", x2);
-	}
-
-
+	printf("РћС‚РІРµС‚ - %lf", result);
+	return 0;
+}
