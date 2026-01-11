@@ -6,7 +6,8 @@
 ## Условие задачи
 
 
-<img width="611" height="85" alt="image" src="https://github.com/user-attachments/assets/946a3193-95fc-482d-8ba0-01ef688332fe" />
+<img width="611" height="98" alt="изображение" src="https://github.com/user-attachments/assets/c56964c9-5734-4711-ba41-a3e86a34e054" />
+
 
 
 
