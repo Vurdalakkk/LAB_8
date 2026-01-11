@@ -6,8 +6,7 @@
 ## Условие задачи
 
 
-<img width="523" height="101" alt="image" src="https://github.com/user-attachments/assets/5f00bd70-ca9f-4fbd-b5b9-76159ddde47b" />
-
+<img width="611" height="85" alt="image" src="https://github.com/user-attachments/assets/946a3193-95fc-482d-8ba0-01ef688332fe" />
 
 
 
@@ -18,18 +17,32 @@
 
 
 ### Алгоритм
-1. **Начало**
-2. Создание переменной для ввода из консоли <br>
-   - `double x` - значение,которое будем подставлять в функцию<br>
-3. Вычисление и вывод результата<br>
-   - 'x - (pow(x, 3) / tgamma(4)) + (pow(x, 5) / tgamma(6)) - (pow(x, 7) / tgamma(8)) + (pow(x, 9) / tgamma(10)) - (pow(x, 11) / tgamma(12)) + (pow(x, 13) / tgamma(14))'
-4. **Конец**
+1. **Начало программы**
+2. Подключение необходимых библиотек:
+   - `stdio.h` - для ввода/вывода
+   - `locale.h` - для поддержки русского языка
+   - `math.h` - для математических функций
+3. Установка русской локали
+4. Объявление переменных:
+   - `x` - входное значение (тип double)
+   - `result` - результат вычислений (тип double, инициализирован 0)
+5. Ввод значения `x` с клавиатуры
+6. Цикл от i = 0 до 6 включительно:
+   - Вычисление числителя: `pow(x, 2*i + 1)`
+   - Вычисление знаменателя: `tgamma(2*i + 2)` (факториал через гамма-функцию)
+   - Вычисление текущего члена ряда: `pow(-1, i) * числитель / знаменатель`
+   - Добавление текущего члена к результату
+7. Вывод итогового результата
+8. **Конец программы**
 
 </div>
 
 ### Блок-схема
 
-<img width="637" height="682" alt="LAB_8" src="https://github.com/user-attachments/assets/27198b92-c9f0-4a83-8aa9-b2048382f643" />
+
+<img width="359" height="812" alt="LAB_8_DZ" src="https://github.com/user-attachments/assets/28edc2a3-109e-4f65-bf98-56847b85e97a" />
+
+
 
 
 </div>
@@ -37,33 +50,44 @@
 ## 2. Реализация программы
 
 ```c
-// Подключение необходимых библиотек
+// Необходимые библиотеки
 #include <stdio.h>
 #include <locale.h>
 #include <math.h>
 
-// Создание оснвной функции
+
+// Основная функция
 int main() {
-	// Добавление русской локали
+	// Русская локаль
 	setlocale(LC_CTYPE, "RUS");
-	// Создание переменной для ввода из консоли
+
+	// Переменные
 	double x;
-	// Ввод x
-	puts("x - x^3/!3 + x^5/!5 - x^7/!7 + x^9/!9 - x^11/!11 + x^13/!13\nВведите x для решения данного выражения: ");
+	double result = 0;
+	
+	// Ввод числа x фи границы из консоли
+	printf("Введите значение x: ");
 	scanf("%lf", &x);
 	getchar();
-	// Вывод результата
-
-	printf("Результат - %.5lf", x - (pow(x, 3) / tgamma(4)) + (pow(x, 5) / tgamma(6)) - (pow(x, 7) / tgamma(8)) + (pow(x, 9) / tgamma(10)) - (pow(x, 11) / tgamma(12)) + (pow(x, 13) / tgamma(14)));
-
+	
+	// Цикл с вычислением выражения
+	for (int i = 0; i <= 6; i++) {
+		double chisl = pow(x, 2.0 * i + 1);
+		double znam = tgamma(2.0 * i + 2);
+		double term = pow(-1, i) * chisl / znam;
+		result += term;
+	}
+	printf("Ответ - %lf", result);
+	return 0;
 }
+
 ```
 <div align="center">
 
 ## 3. Результаты работы программы
 
-<img width="974" height="511" alt="image" src="https://github.com/user-attachments/assets/e229539c-9ced-49c2-9e92-ad4b354301a9" />
 
+<img width="825" height="174" alt="изображение" src="https://github.com/user-attachments/assets/08a962b6-344a-455b-a395-ad90a8f5d777" />
 
 
 
